@@ -1,0 +1,9 @@
+master_hostname: 127.0.0.1
+master_port: 6379
+slave_port: 6378
+master_pid_file: /var/run/event_master.pid
+master_log_file: /tmp/event_master.log
+master_db_file: dump_event_master.rdb
+slave_pid_file: /var/run/event_slave.pid
+slave_log_file: /tmp/event_slave.log
+slave_db_file: dump_event_slave.rdb

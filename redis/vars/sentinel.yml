@@ -1,0 +1,7 @@
+sentinel_port: 26379
+sentinel_pid_file: /var/run/redis_sentinel.pid
+sentinel_log_file: /tmp/redis_sentinel.log
+event_master_hostname: 127.0.0.1
+event_master_port: 6379
+alarm_master_hostname: 127.0.0.1
+alarm_master_port: 7379

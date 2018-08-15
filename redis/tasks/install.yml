@@ -1,0 +1,18 @@
+---
+- name: Download redis
+  get_url:
+    url: http://download.redis.io/releases/redis-4.0.11.tar.gz
+    dest: /Users/dollyg/Downloads/redis-4.0.11.tar.gz
+
+- name: Unarchive redis
+  unarchive:
+    src: /Users/dollyg/Downloads/redis-4.0.11.tar.gz
+    dest: /Users/dollyg/Downloads/redis-4.0.11
+    creates: /Users/dollyg/Downloads/redis-4.0.11
+    remote_src: no
+
+- name: Make
+  make:
+    chdir: /Users/dollyg/Downloads/redis-4.0.11
+    target: install
+  become: yes

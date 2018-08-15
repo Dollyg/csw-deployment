@@ -1,0 +1,25 @@
+---
+
+- include_vars: "{{ service }}_server.yml"
+
+- name: configure {{ service }} master
+  template:
+    src: master.conf.j2
+    dest: ./{{service}}_master.conf
+  when: cmd == "start"
+
+- name: start {{ service }} server
+  vars:
+    log_file: "{{service}}_log_file"
+  shell: nohup redis-server ./{{service}}_master.conf > {{ log_file }} 2>&1 &
+  when: cmd == "start"
+
+- name: stop event master
+  shell: redis-cli -p {{master_port}} shutdown
+  when: cmd == "stop"
+
+- name: remove event master pid file
+  file:
+    path: "{{master_pid_file}}"
+    state: absent
+  when: cmd == "stop"

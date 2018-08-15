@@ -1,0 +1,9 @@
+master_hostname: 127.0.0.1
+master_port: 7379
+slave_port: 7378
+master_pid_file: /var/run/alarm_master.pid
+master_log_file: /tmp/alarm_master.log
+master_db_file: dump_alarm_master.rdb
+slave_pid_file: /var/run/alarm_slave.pid
+slave_log_file: /tmp/alarm_slave.log
+slave_db_file: dump_alarm_slave.rdb
