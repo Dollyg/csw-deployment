@@ -7,8 +7,8 @@
     dest: ./sentinel.conf
   when: cmd == "start"
 
-- name: start sentinel
-  shell: nohup redis-sentinel ./sentinel.conf > "{{ sentinel_log_file }}" 2>&1 &
+- name: Start sentinel and register with location service
+  shell: "nohup {{csw_apps_path}}/csw-location-agent -DclusterSeeds={{cluster_seeds}} --name EventServer,AlarmServer --command \"redis-sentinel ./sentinel.conf > {{ sentinel_log_file }} 2>&1 & \" "
   when: cmd == "start"
 
 - include_tasks: stop.yml

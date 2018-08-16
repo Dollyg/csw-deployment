@@ -1,4 +1,17 @@
 ---
 
+
 - include_tasks: seed.yml
 - include_tasks: config.yml
+
+- include_tasks: install_redis.yml
+  when: cmd == "start"
+
+- include_tasks: sentinel.yml
+
+- include_tasks: master.yml
+  vars:
+    service: "{{item}}"
+  with_items: 
+    - event
+    - alarm

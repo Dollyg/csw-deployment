@@ -3,6 +3,5 @@
 - name: configure redis
   hosts: localhost
   roles:
-    # - redis
     - services 
 

@@ -1,12 +1,12 @@
 ---
 # vars file for services
 
+cmd: start
 log_dir: /tmp/csw-prod/logs
 csw_apps_path: ../csw-prod/target/universal/stage/bin/
 cluster_seeds: "{{ansible_default_ipv4.address}}:{{seed_port}}"
 
 # location-agent
-
 location_agent_script: csw-location-agent
 
 # seed
