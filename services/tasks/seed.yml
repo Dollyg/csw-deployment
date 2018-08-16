@@ -1,0 +1,4 @@
+---
+
+- name: start seed app
+  shell: "{{csw_apps_path}}/csw-cluster-seed --clusterPort {{seed_port}} -DclusterSeeds={{cluster_seeds}} &> {{seed_log_file}} &"

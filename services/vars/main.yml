@@ -1,0 +1,21 @@
+---
+# vars file for services
+
+log_dir: /tmp/csw-prod/logs
+csw_apps_path: ../csw-prod/target/universal/stage/bin/
+cluster_seeds: "{{ansible_default_ipv4.address}}:{{seed_port}}"
+
+# location-agent
+
+location_agent_script: csw-location-agent
+
+# seed
+seed_port: 5552
+seed_log_file: "{{log_dir}}/seed.log"
+seed_pid_file: "{{log_dir}}/seed.pid"
+
+# config
+config_port: 5000
+config_log_file: "{{log_dir}}/config.log"
+config_pid_file: "{{log_dir}}/config.pid"
+init_repo: "--initRepo"

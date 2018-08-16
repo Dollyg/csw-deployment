@@ -1,0 +1,5 @@
+---
+
+- name: start config app
+ 
+  shell: "{{csw_apps_path}}/csw-config-server --port {{config_port}} {{init_repo}} -DclusterSeeds={{cluster_seeds}} &> {{config_log_file}} &"
