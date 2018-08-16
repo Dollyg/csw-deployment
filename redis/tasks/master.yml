@@ -14,12 +14,8 @@
   shell: nohup redis-server ./{{service}}_master.conf > {{ log_file }} 2>&1 &
   when: cmd == "start"
 
-- name: stop event master
-  shell: redis-cli -p {{master_port}} shutdown
-  when: cmd == "stop"
-
-- name: remove event master pid file
-  file:
-    path: "{{master_pid_file}}"
-    state: absent
+- include_tasks: stop.yml
+  vars:
+    port: "{{ master_port }}"
+    pid_file: "{{master_pid_file}}"
   when: cmd == "stop"

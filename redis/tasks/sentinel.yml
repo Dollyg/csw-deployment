@@ -11,12 +11,9 @@
   shell: nohup redis-sentinel ./sentinel.conf > "{{ sentinel_log_file }}" 2>&1 &
   when: cmd == "start"
 
-- name: stop sentinel
-  shell: redis-cli -p {{sentinel_port}} shutdown
-  when: cmd == "stop"
-
-- name: remove sentinel pid file
-  file:
-    path: "{{sentinel_pid_file}}"
-    state: absent
+- include_tasks: stop.yml
+  vars:
+    service: sentinel
+    port: "{{sentinel_port}}"
+    pid_file: "{{sentinel_pid_file}}"
   when: cmd == "stop"

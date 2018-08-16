@@ -1,0 +1,10 @@
+---
+
+- name: "stop {{service}}"
+  shell: redis-cli -p {{port}} shutdown
+  ignore_errors: yes
+
+- name: "remove {{service}} pid file"
+  file:
+    path: "{{pid_file}}"
+    state: absent
